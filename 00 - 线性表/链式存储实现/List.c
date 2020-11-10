@@ -40,14 +40,14 @@ List Find(ElementListType item, List PtrL) {
 
 List Insert(ElementListType item, int index, List PtrL) {
 	List p,s;
-	if (index==0) {	//µÚÒ»¸öÎ»ÖÃ 
+	if (index==0) {	//ç¬¬ä¸€ä¸ªä½ç½® 
 		s = (List)malloc(sizeof(struct LNode));
 		s->Data = item;
 		s->Next = PtrL;
 		return s;
 	}
 	p = FindKth(index-1, PtrL);
-	if (p==NULL) return NULL;	//ÕÒ²»µ½K-1µÄÎ»ÖÃ 
+	if (p==NULL) return NULL;	//æ‰¾ä¸åˆ°K-1çš„ä½ç½® 
 	else {
 		s = (List)malloc(sizeof(struct LNode));
 		s->Data = item;
@@ -60,7 +60,7 @@ List Insert(ElementListType item, int index, List PtrL) {
 
 List Delete(int index, List PtrL) {
 	List p, s;
-	if (index==0) {	//É¾³ýµÄÊÇµÚÒ»¸ö 
+	if (index==0) {	//åˆ é™¤çš„æ˜¯ç¬¬ä¸€ä¸ª 
 		s = PtrL;
 		if (!PtrL) {
 			return NULL;
@@ -71,14 +71,12 @@ List Delete(int index, List PtrL) {
 		return PtrL;
 	} 
 	p = FindKth(index-1, PtrL); 
-	if (p==NULL) return NULL;	//Ã»ÓÐµÚK-1¸öÔªËØ 
-	else if (p->Next==NULL) return NULL; //Ã»ÓÐµÚK¸öÔªËØ
+	if (p==NULL) return NULL;	//æ²¡æœ‰ç¬¬K-1ä¸ªå…ƒç´  
+	else if (p->Next==NULL) return NULL; //æ²¡æœ‰ç¬¬Kä¸ªå…ƒç´ 
 	else {
 		s = p->Next;
 		p->Next = s->Next;
 		free(s);
 		return PtrL;
-	} 
-	
-	 
+	} 	 
 } 
